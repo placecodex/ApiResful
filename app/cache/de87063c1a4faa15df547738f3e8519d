@@ -1,0 +1,532 @@
+a:2:{s:6:"expire";i:1558293654;s:7:"headers";a:0:{}}ENDCI--->
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <head>
+        <title>3Pago | Enviar y solicitar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- shortcut icon -->
+        <link rel="shortcut icon" href="https://localhost/3pago/favicon.ico" type="image/x-icon">
+
+   <!-- Styles  -->
+    <link href="" rel='stylesheet' type='text/css'>
+
+   <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://localhost/3pago/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Font-awesome -->
+        <link rel="stylesheet" href="https://localhost/3pago//assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+  <!-- General css -->
+        <link rel="stylesheet" href="https://localhost/3pago//assets/css/general.css" rel="stylesheet" type="text/css">
+
+
+ <!-- Datapicker -->
+ <link href="https://localhost/3pago/assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+
+<!-- Bootstrap Form Helpers -->
+  <link href="https://localhost/3pago/assets/bootstrap-formhelpers/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+
+
+<!-- Bootstrap Toggle -->
+<link href="https://localhost/3pago/assets/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+
+<script src="https://localhost/3pago/assets/bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+
+
+
+
+<!-- Bootstrap sweet aleert -->
+<link href="https://localhost/3pago/assets/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">
+
+<script src="https://localhost/3pago/assets/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>
+
+
+
+
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+
+  <!-- Load line  -->
+ <link href="https://localhost/3pago/assets/css/pre_load.css" rel='stylesheet' type='text/css'>
+
+ <script src="https://localhost/3pago/assets/js/pre_load.js" type='text/javascript'></script>
+
+ 
+  <!-- Bootstrap Table Expandable  -->
+ <link href="https://localhost/3pago/assets/css/bootstrap-table-expandable.css" rel='stylesheet' type='text/css'>
+ <script src="https://localhost/3pago/assets/js/bootstrap-table-expandable.js" type='text/javascript'></script>
+
+
+  <!-- Alertify  -->
+ <link href="https://localhost/3pago/assets/css/alertify.min.css" rel='stylesheet' type='text/css'>
+
+ <script src="https://localhost/3pago/assets/js/alertify.min.js" type='text/javascript'></script>
+
+
+<!-- Alertify theme  -->
+ <link href="https://localhost/3pago/assets/theme/default.min.css" rel='stylesheet' type='text/css'>
+
+ <link href="https://localhost/3pago/assets/theme/semantic.min.css" rel='stylesheet' type='text/css'>
+
+
+<!-- logout temp  -->
+<script src="" type='text/javascript'></script>
+
+
+ <!-- modal card  -->
+ <link href="" rel='stylesheet' type='text/css'>
+
+ <script src="" type='text/javascript'></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "showLink": false,
+  "theme": "edgeless",
+  "position": "bottom-right",
+  "content": {
+    "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
+    "dismiss": "Aceptar",
+    "link": "Leer mas"
+  }
+})});
+</script>
+
+
+
+
+<!-- Preloader 2-->
+
+<style type="text/css">
+	
+
+/* Preloader */
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  /* change if the mask should have another color then white */
+  z-index: 99;
+  /* makes sure it stays on top */
+}
+
+#status {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+  /* is width and height divided by two */
+}
+
+</style>
+
+
+<script type="text/javascript">
+	
+
+
+	$(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(0).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(0).css({'overflow':'visible'});
+})
+</script>
+
+
+
+
+
+ 
+
+<script type="text/javascript">
+
+ function confirmarCierre() {
+    //le doy un tiempo a la funcion cerrar sesion para que el usuario tenga un tiempo para confirmar, sino lo hizo en el tiempo se cerrara la sesion automaticamente
+    var cerrar = setTimeout(cerrarSesion,5000);//5 segs de prueba
+    alertify.confirm(
+        'Cierre de Sesión por Inactividad',
+        ' Debido al tiempo de Inactividad Su Sesión Expirara, presione OK para mantener su sesion activa', 
+        function(){
+            //si presiona OK
+            clearTimeout(cerrar); //elimino el tiempo a la funcion cerrarSesion
+            clearTimeout(temp); //elimino el tiempo a la funcion confirmarCierre
+            temp = setTimeout(confirmarCierre, 5000); //y aca le doy un nuevo tiempo a la funcion confirmarCierre (5 segs)
+            alertify.message('Su sesión ha sido prolongada');
+        },
+        function(){
+            
+            cerrarSesion(); //si presiono Cancel, pues ejecuta la funcion cerrarSesion y posteriormente la cierra.
+        }
+    );
+}
+
+function cerrarSesion() {
+    //window.location = "/logout";
+    alertify.message('SESION FINALIZADA'); //coloco una notificacion para observar el momento en el q se ejecuta
+    //NOTA: esto no va solo es de demostracion
+
+    //Redirecionar a cierre de sesion
+    window.location.replace(" https://localhost/3pago/auth/logout");
+}
+
+// se llamará a la función que confirmar Cierre después de 10 segundos
+var temp = setTimeout(confirmarCierre, 500000);
+
+// hacemos que al pulsar en los botones de Alertify no se propaguen los eventos
+$("body").on("click", ".ajs-button", function(e) {
+  e.stopPropagation();
+});
+
+// cuando se detecte actividad en cualquier parte de la app
+$( document ).on('click keyup keypress keydown blur change', function(e) {
+    // borrar el temporizador de la funcion confirmarCierre
+    clearTimeout(temp);
+    // y volver a iniciarlo con 10segs
+    temp = setTimeout(confirmarCierre,500000);
+    console.log('actividad detectada');
+});
+
+</script>
+
+
+
+
+    </head>
+            
+
+            
+
+
+<body class="">
+
+
+
+
+	
+
+<script type="text/javascript">
+    
+$(document).ready(function() {   
+            var sideslider = $('[data-toggle=collapse-side]');
+            var sel = sideslider.attr('data-target');
+            var sel2 = sideslider.attr('data-target-2');
+            sideslider.click(function(event){
+                $(sel).toggleClass('in');
+                $(sel2).toggleClass('out');
+            });
+        });
+
+
+</script>
+
+
+  
+<nav role="banner" class="navbar-fixed-top colorbar navbar-default   navbar-inverse" >
+  <div class="container"> 
+        <div class="navbar-header">
+          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-ring">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+
+
+
+
+<!--logo nav-->
+
+ <!--<a class="navbar-brand" href="<?#= site_url();?>">
+        <img alt="Brand" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC">
+      </a>-->
+
+
+
+
+
+    <a class="navbar-brand ic" href="https://localhost/3pago/">3Pago</a>
+    <!--   <a class="navbar-brand" rel="home" href="<?php# echo base_url();?>" title="Buy Sell Rent Everyting">
+        <img style="max-width:100px; margin-top: -7px;"
+             src="/img/transparent-white-logo.png">
+    </a>-->
+        </div>
+         <div class="navbar-inverse  side-collapse in"  >
+         <!-- <div role="navigation " class="navbar-collapse">-->
+<ul class="nav navbar-nav " >        
+<li><a href="https://localhost/3pago/myaccount/">Resumen</a></li>
+
+
+<li>  <a href="https://localhost/3pago/myaccount/transaction/">Enviar y solicitar</a></li>
+          
+<li><a href="https://localhost/3pago/myaccount/history/">Movimientos</a></li>       
+   
+<!--<li></li>-->
+
+
+<!--<li>  <?#= anchor('/myaccount/withdraw-deposit/', 'Deposito y retiro'); ?></li>-->
+
+<li>  <a href="https://localhost/3pago/myaccount/wallet/">Wallet</a></li>
+
+</ul>
+         <!-- </div>-->
+
+
+
+<ul class="nav navbar-nav navbar-right">         
+<li><a href="https://localhost/3pago/myaccount/setting/"><i class="glyphicon glyphicon-cog"> </i> Configuracion</a></li>
+<li><a href="https://localhost/3pago/logout/"><i class="glyphicon glyphicon-log-out"></i> Salir</a></li>  
+</ul>
+
+
+
+
+
+</div> 
+</div>
+</nav>
+
+	
+<style type="text/css">
+    
+body { background: #F0F0F0;    }
+
+    
+</style>
+
+<div class="container side-collapse-container"> 
+
+   
+<div class="row">
+    
+<div class="well white">
+    
+   <h1>Transacciones 3Pago</h1> 
+   <p> Con transacciones 3pago usted podra enviar, solicitar, transferir o retirar dinero facil y de forma segura.<br> La forma mas rapida y segura de realizar pagos.</p>
+
+
+</div>    
+</div>
+
+
+
+ <div class="row">   
+
+
+
+
+ <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a href="https://localhost/3pago/myaccount/transaction/send/step_1" class="panel panel-default thumbnail cm-thumbnail">
+                            <div class="panel-body text-center">
+
+                               <span class="fa fa-shopping-cart fa-2x" />  
+                                </span>
+                                <h4>Pagar Articulo o Servicio</h4> <small>Pague articulos o servicios de forma segura con garantia de devolucion</small>
+                            </div>
+                        </a>
+                    </div>
+
+
+
+ <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a href="https://localhost/3pago/myaccount/transaction/payment_request" class="panel panel-default thumbnail cm-thumbnail">
+                            <div class="panel-body text-center">
+
+                              <span class="glyphicon fa fa-arrow-down fa-2x" />  
+                                </span>
+                                <h4>Solicitar pago</h4> <small>Haga recordatorios de pagos, Solicitud de pagos por servicios a cualquiera de sus contactos.</small>
+
+                            </div>
+                        </a>
+                    </div>
+
+
+
+
+
+
+
+<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a href="https://localhost/3pago/myaccount/transaction/Automatic_payment" class="panel panel-default thumbnail cm-thumbnail">
+                            <div class="panel-body text-center">
+
+                               <span class="glyphicon glyphicon-refresh fa-2x" />  
+                                </span>
+                                <h4>Pagos recurrentes</h4> <small>Automatice sus pagos o programe sus pagos en periodos de tiempo deseado</small>
+
+                            </div>
+                        </a>
+                    </div>
+
+
+
+
+
+ <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a href="https://localhost/3pago/myaccount/transaction/bank_transfer/step_1" class="panel panel-default thumbnail cm-thumbnail">
+                            <div class="panel-body text-center">
+
+                               <span class="glyphicon fa fa-bank fa-2x" />  
+                                </span>
+                                <h4>Trasferencia Bancaria</h4> <small>transfiera sus fondos de 3pago a a sus cuentas banco locales Banreservas o Banco Popular</small>
+
+                            </div>
+                        </a>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+ <!--<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <a href="<#?= site_url('/myaccount/transaction/bank');?>" class="panel panel-default thumbnail cm-thumbnail">
+                            <div class="panel-body text-center">
+
+                               <span class="glyphicon glyphicon-qrcode fa-2x" />  
+                                </span>
+                                <h4>Q-ry</h4> <small>codigo de pago rapido </small>
+
+                            </div>
+                        </a>
+                    </div>-->
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+           
+
+
+
+
+</div>
+ </div>
+
+
+
+	
+<style type="text/css">
+.unstyled {list-style:none;}
+.footer {width: 100%; margin-top: 80px; height:30px; position: absolute; /*width: 100%;*/}
+</style>
+
+
+<div class=" container-fluid  footer">    
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <a href="https://localhost/3pago/policies">Terminos y condiciones</a>    
+       | <a href="#">Terminos de privacidad</a>
+       | <a href="https://localhost/3pago/contact">Contactanos</a>    
+       | <a href="#">Ayuda</a>  
+       | <a href="#">Seguridad</a> 
+     
+
+      
+      </div>
+      <div class="span4 ">
+        <p class="muted pull-right">© 2018 3pago. Todos los derechos reservados</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+
+
+<!-- Bootstrap Form Helpers -->
+
+  <script src="https://localhost/3pago/assets/bootstrap-formhelpers/js/bootstrap-formhelpers.min.js"></script>
+
+
+
+    <!-- nprogress -->
+<script src="https://localhost/3pago/assets/nprogress.js"></script>   
+
+  <!-- JQuery -->
+<script src="https://localhost/3pago/assets/js/jquery-3.2.1.min.js"></script>   
+
+    <!--Bootstrap 3 -->
+<script src="https://localhost/3pago/assets/js/bootstrap.min.js" type="text/javascript">
+</script>
+
+
+<script src="https://localhost/3pago/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+
+
+<!--<strong>Tiempo de carga {elapsed_time}</strong>//
+
+<strong>   Memoria usada :{memory_usage} </strong>-->
+
+</body>
+</html>
+
+
+
+
+  <!-- nprogress -->
+<script src="https://localhost/3pago/assets/nprogress.js"> </script>   
+  <!-- JQuery -->
+<script src="https://localhost/3pago/assets/js/jquery-3.2.1.min.js"> </script>   
+   <!--Bootstrap 3 -->
+<script src="https://localhost/3pago/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

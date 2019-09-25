@@ -1,0 +1,6 @@
+{
+    "require": {
+        "cybersource/sdk-php": "*",
+        "firebase/php-jwt": "^5.0"
+    }
+}
